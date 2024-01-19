@@ -7,18 +7,22 @@ export class UserService {
   constructor(private readonly userRepository: UserRepository) {}
 
   async findAll() {
-    return this.userRepository.findAll();
+    return await this.userRepository.findAll();
   }
+
   async findById(id: string) {
-    return this.userRepository.findById(id);
+    return await this.userRepository.findById(id);
   }
+
   async create(user: UserEntity) {
-    return this.userRepository.create(user);
+    return await this.userRepository.create(user);
   }
+
   async update(user: UserEntity) {
-    return this.userRepository.update(user);
+    return await this.userRepository.update(user);
   }
+
   async delete(id: string) {
-    return this.userRepository.delete(id);
+    return await this.userRepository.delete(id);
   }
 }

@@ -8,27 +8,27 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Get('findAll')
-  findAll() {
+  async findAll() {
     return this.userService.findAll();
   }
 
   @Get('findById/:id')
-  findById(@Param('id') id: string) {
+  async findById(@Param('id') id: string) {
     return this.userService.findById(id);
   }
 
   @Post('create')
-  createUser(@Body() user: CreateUserDto) {
+  async createUser(@Body() user: CreateUserDto) {
     return this.userService.create(user);
   }
 
   @Post('update')
-  updateUser(@Body() user: UpdateUserDto) {
+  async updateUser(@Body() user: UpdateUserDto) {
     return this.userService.update(user);
   }
 
   @Delete('delete/:id')
-  deleteUser(@Param('id') id: string) {
+  async deleteUser(@Param('id') id: string) {
     return this.userService.delete(id);
   }
 }
