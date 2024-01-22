@@ -18,6 +18,7 @@ export class UserService {
 
   async create(user: UserEntity) {
     user.password = await this.hashPassword.hash(user.password);
+    delete user.confirmPassword;
     return await this.userRepository.create(user);
   }
 
