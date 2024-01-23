@@ -22,8 +22,8 @@ export class UserService {
     return await this.userRepository.create(user);
   }
 
-  async findByEmail(email: string) {
-    return await this.userRepository.findByEmail(email);
+  async findByUsername(username: string) {
+    return await this.userRepository.findByUsername(username);
   }
 
   async update(user: UserEntity) {

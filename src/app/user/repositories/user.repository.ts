@@ -15,10 +15,10 @@ export class UserRepository implements IUserRepository {
     return await this.prisma.user.findUnique({ where: { id } });
   }
 
-  async findByEmail(email: string): Promise<UserEntity> {
+  async findByUsername(username: string): Promise<UserEntity> {
     return this.prisma.user.findFirst({
       where: {
-        email,
+        username,
       },
     });
   }
