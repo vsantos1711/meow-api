@@ -2,6 +2,7 @@ import { Body, Controller, Get, Param, Post, Delete } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UpdateUserDto } from './dtos/update-user.dto';
+import { isPublic } from '../decorators/public.decorator';
 
 @Controller('user')
 export class UserController {
@@ -17,6 +18,7 @@ export class UserController {
     return this.userService.findById(id);
   }
 
+  @isPublic()
   @Post('create')
   async createUser(@Body() user: CreateUserDto) {
     return this.userService.create(user);

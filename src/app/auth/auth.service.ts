@@ -10,17 +10,21 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  async signIn(email: string, password: string): Promise<any> {
-    const user = await this.userService.findByEmail(email);
+  async signIn(username: string, password: string): Promise<any> {
+    const user = await this.userService.findByUsername(username);
     if (!user) throw new Error('User do not exists');
 
     const isMatch = compare(password, user.password);
     if (!isMatch) throw new Error('');
 
-    const payload = { email: user.email, sub: user.id, name: user.name };
+    const payload = {
+      username: user.username,
+      email: user.email,
+      sub: user.id,
+    };
 
     return {
-      username: user.name,
+      username: user.username,
       timestamp: new Date().toISOString(),
       access_token: await this.jwtService.signAsync(payload),
     };
