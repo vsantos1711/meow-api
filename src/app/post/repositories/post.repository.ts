@@ -1,5 +1,5 @@
 import { PostEntity } from '@/domain/entities/post.entity';
-import { IPostRepository } from '@/domain/repositories/post.entity';
+import { IPostRepository } from '@/domain/repositories/post';
 import { PrismaService } from '@/infra/prisma/prisma.service';
 import { Injectable } from '@nestjs/common';
 
@@ -15,8 +15,17 @@ export class PostRepository implements IPostRepository {
     return await this.prisma.post.findMany({ where: { authorId: id } });
   }
 
-  create(data: PostEntity): Promise<PostEntity> {
-    return this.prisma.post.create({ data });
+  async create(post: any, authorId: string): Promise<PostEntity> {
+    return await this.prisma.post.create({
+      data: {
+        ...post,
+        author: {
+          connect: {
+            id: authorId,
+          },
+        },
+      },
+    });
   }
 
   async delete(id: string): Promise<PostEntity> {
