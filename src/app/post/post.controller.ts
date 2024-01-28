@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Post, Req } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Req,
+} from '@nestjs/common';
 import { PostService } from './post.service';
 import { CreatePostDto } from './dtos/create-post.dto';
 import { isPublic } from '../decorators/public.decorator';
@@ -25,8 +33,18 @@ export class PostController {
     return this.postService.create(post, authorId);
   }
 
-  @Post('delete/:id')
-  async delete(id: string) {
+  @Delete('delete/:id')
+  async delete(@Param('id') id: string) {
     return this.postService.delete(id);
+  }
+
+  @Post('comment/:id')
+  async comment(
+    @Body() comment: { text: string },
+    @Req() req: RequestInterface,
+    @Param('id') postId: string,
+  ) {
+    const authorId = req.user.sub;
+    return this.postService.comment(comment.text, authorId, postId);
   }
 }
