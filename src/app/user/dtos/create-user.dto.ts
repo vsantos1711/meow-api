@@ -12,6 +12,11 @@ export class CreateUserDto {
 
   @IsString()
   @IsNotEmpty()
-  @Length(6, 20)
+  @Length(3, 20)
   password: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @Length(3, 20)
+  confirmPassword: string;
 }

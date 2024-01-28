@@ -5,4 +5,5 @@ export type UserEntity = {
   password: string;
   createdAt?: Date;
   updatedAt?: Date;
+  confirmPassword?: string;
 };
