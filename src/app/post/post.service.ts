@@ -20,4 +20,8 @@ export class PostService {
   async delete(id: string) {
     return await this.postRepository.delete(id);
   }
+
+  async comment(comment: string, authorId: string, postId: string) {
+    return await this.postRepository.comment(comment, authorId, postId);
+  }
 }
