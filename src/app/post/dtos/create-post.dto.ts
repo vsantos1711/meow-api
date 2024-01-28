@@ -1,3 +1,4 @@
+import { CommentEntity } from '@/domain/entities/post.entity';
 import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class CreatePostDto {
@@ -27,4 +28,7 @@ export class CreatePostDto {
   @IsOptional()
   @IsString()
   authorId: string;
+
+  @IsOptional()
+  comments: CommentEntity[];
 }
