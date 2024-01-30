@@ -9,7 +9,7 @@ async function main() {
     update: {},
     create: {
       email: 'dog@hub.io',
-      username: 'Dog',
+      username: 'dog',
       password: 'dog',
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -22,7 +22,7 @@ async function main() {
     update: {},
     create: {
       email: 'cat@hub.io',
-      username: 'Cat',
+      username: 'cat',
       password: 'cat',
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -35,7 +35,7 @@ async function main() {
     update: {},
     create: {
       email: 'wolf@hub.io',
-      username: 'Wolf',
+      username: 'wolf',
       password: 'wolf',
       createdAt: new Date(),
       updatedAt: new Date(),
