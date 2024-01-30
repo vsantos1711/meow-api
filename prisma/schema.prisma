@@ -29,10 +29,10 @@ model Post {
   catAge    String
   catBreed  String
   catWeight String
-  comments  Comment[]
   authorId  String
   author    User      @relation(fields: [authorId], references: [id])
   createdAt DateTime  @default(now())
+  comments  Comment[]
 }
 
 model Comment {
