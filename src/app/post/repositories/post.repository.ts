@@ -10,13 +10,21 @@ export class PostRepository implements IPostRepository {
   async listAll(): Promise<any[]> {
     return await this.prisma.post.findMany({
       include: {
-        comments: true,
+        author: true,
+        comments: {
+          include: {
+            author: true,
+          },
+        },
       },
     });
   }
 
   async listByAuthor(id: string): Promise<any[]> {
-    return await this.prisma.post.findMany({ where: { authorId: id } });
+    return await this.prisma.post.findMany({
+      where: { authorId: id },
+      include: { comments: true, author: true },
+    });
   }
 
   async create(post: CreatePost, authorId: string): Promise<any> {
