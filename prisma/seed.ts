@@ -240,6 +240,30 @@ async function main() {
           authorId: wolf.id,
           text: 'Lionheart indeed.',
         },
+        {
+          text: 'Valar Morghulis, even for cats.',
+          authorId: wolf.id,
+        },
+        {
+          text: "I've never seen a cat like this beyond the Wall.",
+          authorId: dog.id,
+        },
+        {
+          authorId: wolf.id,
+          text: 'Lionheart indeed.',
+        },
+        {
+          text: 'Valar Morghulis, even for cats.',
+          authorId: wolf.id,
+        },
+        {
+          text: "I've never seen a cat like this beyond the Wall.",
+          authorId: dog.id,
+        },
+        {
+          authorId: wolf.id,
+          text: 'Lionheart indeed.',
+        },
       ],
       variant: 'top-left',
     },
