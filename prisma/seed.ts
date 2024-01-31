@@ -140,7 +140,7 @@ async function main() {
     },
 
     {
-      url: 'https://cdn2.thecatapi.com/images/dhn.jpg',
+      url: 'https://cdn2.thecatapi.com/images/HxENheThN.jpg',
       views: 25982,
       catName: 'Needle',
       catAge: '2',
@@ -156,7 +156,7 @@ async function main() {
     },
 
     {
-      url: 'https://cdn2.thecatapi.com/images/dhn.jpg',
+      url: 'https://cdn2.thecatapi.com/images/MTgzODA0OA.jpg',
       views: 25982,
       catName: 'Tyrion Lannister',
       catAge: '1',
@@ -204,7 +204,7 @@ async function main() {
     },
 
     {
-      url: 'https://cdn2.thecatapi.com/images/MTgzODA0OA.jpg',
+      url: 'https://cdn2.thecatapi.com/images/s6l9xck-Q.jpg',
       views: 1236,
       catName: 'White Walker',
       catAge: '2',
