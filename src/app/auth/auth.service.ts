@@ -34,10 +34,9 @@ export class AuthService {
   @Cron(CronExpression.EVERY_MINUTE)
   async healthCheck() {
     try {
-      const response = await fetch(
-        'https://meowhub-api.onrender.com/auth/healt',
-      );
-      const health = await response.json();
+      const health = await fetch(
+        'https://meowhub-api.onrender.com/auth/health',
+      ).then((res) => res.text());
       console.log('Health check result:', health);
     } catch (error) {
       console.error('Health check failed:', error);
