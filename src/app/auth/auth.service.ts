@@ -31,7 +31,7 @@ export class AuthService {
     };
   }
 
-  @Cron(CronExpression.EVERY_MINUTE)
+  @Cron(CronExpression.EVERY_5_MINUTES)
   async healthCheck() {
     try {
       const health = await fetch(
