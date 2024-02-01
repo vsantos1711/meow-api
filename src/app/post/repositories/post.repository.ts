@@ -9,6 +9,8 @@ export class PostRepository implements IPostRepository {
 
   async listAll(): Promise<any[]> {
     return await this.prisma.post.findMany({
+      skip: 0,
+      take: 6,
       include: {
         author: true,
         comments: {
