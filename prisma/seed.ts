@@ -267,6 +267,16 @@ async function main() {
       ],
       variant: 'top-left',
     },
+    {
+      url: 'https://cdn2.thecatapi.com/images/ets_USqdE.jpg',
+      views: 25982,
+      catName: 'Arya Stark',
+      catAge: '1',
+      catBreed: 'Wolfcat',
+      catWeight: '2',
+      author: cat.id,
+      comments: [],
+    },
   ];
 
   for (let i = 0; i < postData.length; i++) {
