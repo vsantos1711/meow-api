@@ -18,4 +18,10 @@ export class AuthController {
   getProfile(@Request() req: RequestInterface) {
     return req.user;
   }
+
+  @isPublic()
+  @Get('health')
+  healthCheck() {
+    return '🌳 ALL GREEN AND UP!';
+  }
 }
