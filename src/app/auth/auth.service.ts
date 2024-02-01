@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { UserService } from '../user/user.service';
 import { JwtService } from '@nestjs/jwt';
 import { compare } from 'bcrypt';
+import { Cron, CronExpression } from '@nestjs/schedule';
 
 @Injectable()
 export class AuthService {
@@ -28,5 +29,18 @@ export class AuthService {
       timestamp: new Date().toISOString(),
       access_token: await this.jwtService.signAsync(payload),
     };
+  }
+
+  @Cron(CronExpression.EVERY_MINUTE)
+  async healthCheck() {
+    try {
+      const response = await fetch(
+        'https://meowhub-api.onrender.com/auth/healt',
+      );
+      const health = await response.json();
+      console.log('Health check result:', health);
+    } catch (error) {
+      console.error('Health check failed:', error);
+    }
   }
 }
