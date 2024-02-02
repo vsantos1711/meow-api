@@ -1,12 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { PostRepository } from './repositories/post.repository';
 import { PostEntity } from '@/domain/entities/post.entity';
+import { addRandomVariant } from '../utils/randomVariant';
 @Injectable()
 export class PostService {
   constructor(private readonly postRepository: PostRepository) {}
 
   async findAll() {
-    return await this.postRepository.listAll();
+    const postList = await this.postRepository.listAll();
+    const listWithVariants = addRandomVariant(postList);
+    return listWithVariants;
   }
 
   async findByAuthor(id: string) {
