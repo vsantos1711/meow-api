@@ -1,5 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { CreatePost } from '@/domain/entities/post.entity';
+import {
+  CommentEntity,
+  CreatePost,
+  PostEntity,
+} from '@/domain/entities/post.entity';
 import { IPostRepository } from '@/domain/repositories/post';
 import { PrismaService } from '@/infra/prisma/prisma.service';
 
@@ -7,7 +11,7 @@ import { PrismaService } from '@/infra/prisma/prisma.service';
 export class PostRepository implements IPostRepository {
   constructor(private readonly prisma: PrismaService) {}
 
-  async listAll(): Promise<any[]> {
+  async listAll(): Promise<PostEntity[]> {
     return await this.prisma.post.findMany({
       skip: 0,
       take: 6,
@@ -22,14 +26,14 @@ export class PostRepository implements IPostRepository {
     });
   }
 
-  async listByAuthor(id: string): Promise<any[]> {
+  async listByAuthor(id: string): Promise<PostEntity[]> {
     return await this.prisma.post.findMany({
       where: { authorId: id },
       include: { comments: true, author: true },
     });
   }
 
-  async create(post: CreatePost, authorId: string): Promise<any> {
+  async create(post: CreatePost, authorId: string): Promise<PostEntity> {
     return await this.prisma.post.create({
       data: {
         ...post,
@@ -45,11 +49,15 @@ export class PostRepository implements IPostRepository {
     });
   }
 
-  async delete(id: string): Promise<any> {
+  async delete(id: string): Promise<PostEntity> {
     return await this.prisma.post.delete({ where: { id } });
   }
 
-  async comment(text: string, authorId: string, postId: string): Promise<any> {
+  async comment(
+    text: string,
+    authorId: string,
+    postId: string,
+  ): Promise<CommentEntity> {
     return await this.prisma.comment.create({
       data: {
         text,

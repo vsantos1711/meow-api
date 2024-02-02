@@ -8,9 +8,10 @@ export type PostEntity = {
   catAge: string;
   catBreed: string;
   catWeight: string;
-  comments: CommentEntity[];
+  comments?: CommentEntity[];
   author?: UserEntity;
   createdAt?: Date;
+  variant?: string;
 };
 
 export type CreatePost = Omit<PostEntity, 'comments'>;
@@ -19,8 +20,8 @@ export type CommentEntity = {
   id?: string;
   text: string;
   authorId: string;
-  author: UserEntity;
+  author?: UserEntity;
   postId: string;
-  post: PostEntity;
+  post?: PostEntity;
   createdAt?: Date;
 };
