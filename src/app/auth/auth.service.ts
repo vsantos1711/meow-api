@@ -3,6 +3,7 @@ import { UserService } from '../user/user.service';
 import { JwtService } from '@nestjs/jwt';
 import { compare } from 'bcrypt';
 import { Cron, CronExpression } from '@nestjs/schedule';
+import { resetDatabase } from '../utils/resetDatabase';
 
 @Injectable()
 export class AuthService {
@@ -38,6 +39,7 @@ export class AuthService {
         'https://meowhub-api.onrender.com/auth/health',
       ).then((res) => res.text());
       console.log('Health check result:', health);
+      resetDatabase();
     } catch (error) {
       console.error('Health check failed:', error);
     }
