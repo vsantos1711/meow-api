@@ -39,7 +39,7 @@ export class AuthService {
         'https://meowhub-api.onrender.com/auth/health',
       ).then((res) => res.text());
       console.log('Health check result:', health);
-      resetDatabase();
+      //resetDatabase();
     } catch (error) {
       console.error('Health check failed:', error);
     }

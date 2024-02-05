@@ -13,7 +13,6 @@ export function resetDatabase() {
       console.error('Error:', error);
       return;
     }
-
     console.log('Standard output:', stdout);
     console.log('Error output:', stderr);
   }).on('exit', (code) => {
