@@ -22,6 +22,6 @@ export class AuthController {
   @isPublic()
   @Get('health')
   healthCheck() {
-    return '🌳 ALL GREEN AND UP! \n 🪓 WE CLEANED SOME BRANCHES🌿 TOO! ';
+    return '🌳 ALL GREEN AND UP!';
   }
 }
