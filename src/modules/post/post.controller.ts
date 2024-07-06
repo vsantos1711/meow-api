@@ -5,12 +5,10 @@ import {
   Get,
   Param,
   Post,
-  Req,
 } from '@nestjs/common';
 import { PostService } from './post.service';
 import { CreatePostDto } from './dtos/create-post.dto';
 import { isPublic } from '../auth/decorators/public.decorator';
-import { RequestInterface } from '../auth/interfaces/request';
 import { LoggedInUser } from '../auth/decorators/logged-in-user.decorator';
 
 @Controller('post')

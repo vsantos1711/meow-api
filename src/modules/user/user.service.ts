@@ -6,12 +6,7 @@ import { UpdateUserDto } from './dtos/update-user.dto';
 import { UserNotFoundError } from './errors/user-not-found';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateUserDto } from './dtos/create-user.dto';
-
-export interface LoggedUser {
-  username: string;
-  email: string;
-  sub: string;
-}
+import { LoggedUser } from '../auth/interfaces/logged-user';
 
 @Injectable()
 export class UserService {

@@ -1,10 +1,9 @@
 import { AuthService } from './auth.service';
 import { SignInDTO } from './dtos/sign-in.dto';
-import { RequestInterface } from './interfaces/request';
 import { isPublic } from './decorators/public.decorator';
-import { Body, Controller, Get, Post, Request } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { LoggedInUser } from './decorators/logged-in-user.decorator';
-import { LoggedUser } from '../user/user.service';
+import { LoggedUser } from './interfaces/logged-user';
 
 @Controller('auth')
 export class AuthController {

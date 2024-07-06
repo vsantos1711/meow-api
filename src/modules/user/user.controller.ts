@@ -1,9 +1,10 @@
-import { Body, Controller, Get, Param, Post, Delete, Put, Req } from '@nestjs/common';
-import { LoggedUser, UserService } from './user.service';
+import { Body, Controller, Get, Param, Post, Delete, Put } from '@nestjs/common';
+import { UserService } from './user.service';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UpdateUserDto } from './dtos/update-user.dto';
 import { isPublic } from '../auth/decorators/public.decorator';
 import { LoggedInUser } from '../auth/decorators/logged-in-user.decorator';
+import { LoggedUser } from '../auth/interfaces/logged-user';
 
 @Controller('user')
 export class UserController {
