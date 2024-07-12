@@ -18,5 +18,4 @@ export class Comment extends BaseEntity {
 
   @ManyToOne(() => Post, (post) => post.comments)
   post: Relation<Post>;
-
 }

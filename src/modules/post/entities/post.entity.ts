@@ -11,7 +11,7 @@ import { BaseEntity } from '../../../shared/db/typeorm/base.entity';
 
 @Entity('posts')
 export class Post extends BaseEntity {
-  @Column()
+  @Column({ unique: true })
   url: string;
 
   @Column({ default: 0 })
@@ -33,5 +33,5 @@ export class Post extends BaseEntity {
   author: Relation<User>;
 
   @OneToMany(() => Comment, (comment: Comment) => comment.post)
-  comments: Relation<Comment[]>;
+  comments?: Relation<Comment[]>;
 }
