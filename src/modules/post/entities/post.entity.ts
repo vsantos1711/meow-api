@@ -1,10 +1,4 @@
-import {
-  Entity,
-  Column,
-  ManyToOne,
-  OneToMany,
-  Relation
-} from 'typeorm';
+import { Entity, Column, ManyToOne, OneToMany, Relation } from 'typeorm';
 import { User } from '../../user/entities/user.entity';
 import { Comment } from '../entities/comment.entity';
 import { BaseEntity } from '../../../shared/db/typeorm/base.entity';
@@ -34,4 +28,6 @@ export class Post extends BaseEntity {
 
   @OneToMany(() => Comment, (comment: Comment) => comment.post)
   comments?: Relation<Comment[]>;
+
+  variant?: string;
 }

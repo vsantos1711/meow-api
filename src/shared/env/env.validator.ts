@@ -7,7 +7,7 @@ export enum NODE_ENV {
 }
 
 export const envSchema = z.object({
-  PORT: z.string().optional().default('3000'),
+  PORT: z.string().optional().default('3003'),
   NODE_ENV: z.nativeEnum(NODE_ENV).optional().default(NODE_ENV.development),
   JWT_SECRET: z.string().optional().default('meowsecret'),
   JWT_EXPIRATION: z.string().optional().default('1d'),

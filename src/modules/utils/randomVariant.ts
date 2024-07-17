@@ -1,6 +1,6 @@
-import { PostEntity } from '@/domain/entities/post.entity';
+import { Post } from '@/modules/post/entities/post.entity';
 
-export function addRandomVariant(postList: PostEntity[]): PostEntity[] {
+export function addRandomVariant(postList: Post[]): Post[] {
   const variantOptions = ['top-right', 'top-left', 'bot-right', 'bot-left'];
   const randomIndex = Math.floor(Math.random() * postList.length);
 

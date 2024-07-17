@@ -1,6 +1,6 @@
 import { AuthService } from './auth.service';
 import { SignInDTO } from './dtos/sign-in.dto';
-import { isPublic } from './decorators/public.decorator';
+import { Public } from './decorators/public.decorator';
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { LoggedInUser } from './decorators/logged-in-user.decorator';
 import { LoggedUser } from './interfaces/logged-user';
@@ -9,7 +9,7 @@ import { LoggedUser } from './interfaces/logged-user';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @isPublic()
+  @Public()
   @Post('login')
   login(@Body() login: SignInDTO) {
     return this.authService.signIn(login.username, login.password);
@@ -20,7 +20,7 @@ export class AuthController {
     return user;
   }
 
-  @isPublic()
+  @Public()
   @Get('health')
   healthCheck() {
     return '🌳 ALL GREEN AND UP!';
