@@ -1,8 +1,16 @@
-import { Body, Controller, Get, Param, Post, Delete, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Delete,
+  Put,
+} from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UpdateUserDto } from './dtos/update-user.dto';
-import { isPublic } from '../auth/decorators/public.decorator';
+import { Public } from '../auth/decorators/public.decorator';
 import { LoggedInUser } from '../auth/decorators/logged-in-user.decorator';
 import { LoggedUser } from '../auth/interfaces/logged-user';
 
@@ -20,16 +28,18 @@ export class UserController {
     return this.userService.findById(id);
   }
 
-  @isPublic()
+  @Public()
   @Post('create')
   async createUser(@Body() dto: CreateUserDto) {
     return this.userService.create(dto);
   }
 
   @Put('update')
-  async updateUser(@Body() dto: UpdateUserDto, @LoggedInUser() loggedUser: LoggedUser) {
-    const user = loggedUser;
-    return this.userService.update(dto, user);
+  async updateUser(
+    @Body() dto: UpdateUserDto,
+    @LoggedInUser() loggedUser: LoggedUser,
+  ) {
+    return this.userService.update(dto, loggedUser);
   }
 
   @Delete('delete/:id')

@@ -12,7 +12,7 @@ import { LoggedUser } from '../auth/interfaces/logged-user';
 export class UserService {
   constructor(
     @InjectRepository(User)
-    private readonly userRepository: Repository<User>
+    private readonly userRepository: Repository<User>,
   ) {}
   private readonly logger = new Logger(UserService.name);
   private readonly hashPassword = HashPassword;
@@ -32,7 +32,7 @@ export class UserService {
       throw new UserNotFoundError(id);
     }
     this.logger.log(`Found user with id: ${id}`);
-    return user
+    return user;
   }
 
   async create(dto: CreateUserDto) {
@@ -55,7 +55,7 @@ export class UserService {
       throw new UserNotFoundError();
     }
     this.logger.log(`Found user with username: ${username}`);
-    return user
+    return user;
   }
 
   async update(dto: UpdateUserDto, loggedUser: LoggedUser) {
@@ -72,6 +72,7 @@ export class UserService {
   }
 
   async delete(id: string) {
-    return await this.userRepository.delete(id);
+    this.logger.log(`Deleting user with id: ${id}`);
+    return await this.userRepository.softDelete(id);
   }
 }
